@@ -6,6 +6,9 @@ import backtype.storm.spout.SpoutOutputCollector;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichSpout;
+import backtype.storm.tuple.Fields;
+import backtype.storm.tuple.Values;
+import backtype.storm.utils.Utils;
 
 @SuppressWarnings("serial")
 public class HelloSpout extends BaseRichSpout {
@@ -13,8 +16,8 @@ public class HelloSpout extends BaseRichSpout {
 	private SpoutOutputCollector _collector;
 
 	public void nextTuple() {
-		// TODO Auto-generated method stub
-		
+		Utils.sleep(500);
+		_collector.emit(new Values("hello world"));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -23,8 +26,7 @@ public class HelloSpout extends BaseRichSpout {
 	}
 
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		// TODO Auto-generated method stub
-		
+		declarer.declare(new Fields("greeting"));
 	}
 
 }
