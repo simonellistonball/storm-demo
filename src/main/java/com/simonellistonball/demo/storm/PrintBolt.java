@@ -14,12 +14,12 @@ import backtype.storm.tuple.Tuple;
 public class PrintBolt extends BaseBasicBolt {
 
 	public static Logger LOG = Logger.getLogger(PrintBolt.class);
-	
+
 	@SuppressWarnings("rawtypes")
 	@Override
-    public void prepare(Map stormConf, TopologyContext context) {
-    }
-	
+	public void prepare(Map stormConf, TopologyContext context) {
+	}
+
 	public void execute(Tuple input, BasicOutputCollector collector) {
 		LOG.info(input);
 	}
